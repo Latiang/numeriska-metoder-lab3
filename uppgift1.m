@@ -21,3 +21,5 @@ loglog(TOLS, samples_montecarlo, TOLS, samples_trapetzoid, TOLS, h2_pred, TOLS, 
 legend("Montecarlo", "Trapetsmetoden", "Förväntad ordnign 2", "Förväntad ordning 1/2");
 xlabel("Tolerans")
 ylabel("Antal punkter")
+exportgraphics(gcf, 'uppgift1_punkter_vs_fel.pdf', 'ContentType', 'vector');
+
