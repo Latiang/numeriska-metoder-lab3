@@ -1,4 +1,4 @@
-function [F, s, t] = black_scholes(M,N)
+function [F, s, t, delta_s, delta_t] = black_scholes(M,N)
 %UNTITLED2 Summary of this function goes here
 %   Detailed explanation goes here
 T=1;
@@ -52,10 +52,13 @@ for m=1:M-1
     f_curr(m) = max(K - m*delta_s, 0);
 end
 F(:, N + 1) = f_curr;
+B = sparse(B);
+tic
 for n = N:-1:1
     f_curr = B\(f_curr - r);
     F(:, n) = f_curr;
 end
+toc
 F = [zeros(1, N+1)+K; F; zeros(1, N+1)];
 s = zeros(size(F));
 t = s;
